@@ -1,0 +1,3177 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/2/2012 3:10:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN7-2S758P1"
+  DTS:CreatorName="HEALTHPARTNERS\iazatuchny"
+  DTS:DTSID="{C3F5526A-7E16-4AA0-B532-EE1DB9D1100A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Output - 2 - 3M Imputed Income"
+  DTS:PackageType="5"
+  DTS:VersionBuild="197"
+  DTS:VersionGUID="{6869ACA6-D5D6-4E0D-B853-FA031FC73D34}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[3MReport_FlatFileConnection]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{13A6CD07-E3E5-49B3-9382-6FD462AE217A}"
+      DTS:ObjectName="3MReport_FlatFileConnection">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="RaggedRight"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\enterprise\salessystems\Reports\InternalReporting\FrequentFitness\3MImputedIncome\Bin\3MImputedIncome.prn">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{D9CEE07B-F31E-444B-8283-8C120FA79FF7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="16"
+              DTS:MaximumWidth="16"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{1B82D768-B8D1-4C17-8B02-669B17E17FE4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="4"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{8196D823-13E3-44A5-93A1-358A907ACE0F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="11"
+              DTS:MaximumWidth="11"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{92BF10F8-D52F-4960-9235-7994ABEF0F23}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="16"
+              DTS:MaximumWidth="16"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{43928DFD-9D3B-441D-9C35-63979DF0084B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="14"
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{AA4BFAB0-BA99-43D1-A25D-96296C83B2FA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="31"
+              DTS:MaximumWidth="31"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{46A4C07A-5A4E-4B60-8A85-9602A98C5370}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="100"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{4D14664E-1436-4548-9C98-56D6F0351580}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{37E5BF8F-B1E5-4FF6-9F0B-AD3F583AF6B8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FrequentFitness]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{87ABD9C0-6788-4E6A-BAD9-2A0C9F902BAE}"
+      DTS:ObjectName="FrequentFitness">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::FrequentFitness]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=hpmsssqlprd;Initial Catalog=FrequentFitness;Provider=SQLOLEDB;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SIBilling_ExcelConnection]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{84A504DE-2FCA-4C32-8057-826DAA431EB9}"
+      DTS:ObjectName="SIBilling_ExcelConnection">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\enterprise\salessystems\Reports\InternalReporting\FrequentFitness\SelfInsuredInvoiceSummary\Bin\SIGroupInvoiceBillingSpreadsheet_Template.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{FB2A292B-03CA-41D7-9A6A-04C823FCB9DA}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=mail.healthpartners.com;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{51B65B40-D1DE-4520-A8A6-2BC357601535}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExternalEmailMsg">
+      <DTS:VariableValue
+        DTS:DataType="8">Record count for @[User::RowCount3M]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{83EF5BB6-24B7-4D07-A32F-6F830F904CA9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FinishedProcess">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CEDA94BE-7053-4627-90B0-5A90835BEBD6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MessageBody">
+      <DTS:VariableValue
+        DTS:DataType="8">3m Billing Report is posted to \\\\hpstore2\\3M Frequent Fitness</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{401E4C71-0E53-42E5-A58D-CF7C466DD174}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount3M">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F302E52-6211-4A25-BFCE-087681D96EB8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFTP">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\3M Inputed Income Report"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8BA0181E-1D9B-4607-9F75-729CDB47B864}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="3M Inputed Income Report">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\3M Inputed Income Report\Copy prn Template"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{42441F11-7A43-4695-9DC4-F98ECDD112BC}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copy prn Template"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_ec1871f9d9904e918254407d75a0d854"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp">
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties.Settings.get_Default():ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+
+namespace ST_ec1871f9d9904e918254407d75a0d854.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+        public void Main()
+        {
+            File.Copy("\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\3MImputedIncome\\Bin\\3MImputedIncome.prn", "\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\3MImputedIncome\\Bin\\3MImputedIncome_New.prn", true);
+            
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="st_ec1871f9d9904e918254407d75a0d854.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_ec1871f9d9904e918254407d75a0d854.csproj</RootNamespace>
+    <AssemblyName>ST_ec1871f9d9904e918254407d75a0d854.csproj</AssemblyName>
+    <ProjectGuid>{D379CBF4-D26D-4229-86A3-D33705E48E99}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_ec1871f9d9904e918254407d75a0d854</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_ec1871f9d9904e918254407d75a0d854</msb:DisplayName>
+    <msb:ProjectId>{3B35BE33-DBA2-4A1D-9820-17532CA3C07F}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_ec1871f9d9904e918254407d75a0d854.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_ec1871f9d9904e918254407d75a0d854.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_ec1871f9d9904e918254407d75a0d854.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2012")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_ec1871f9d9904e918254407d75a0d854.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_ec1871f9d9904e918254407d75a0d854.csproj.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDADStVl4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAsi4A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGAuAABPAAAAAEAAANwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAuA4AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAANwEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACU
+LgAAAAAAAEgAAAACAAUA1CAAANQMAAABAAAAAAAAAKgtAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHZyAQAAcHLaAABwFygQAAAKAigRAAAKFm8SAAAKKh4CKBMA
+AAoqHgIoFAAACiqufgEAAAQtHnK7AQBw0AMAAAIoFQAACm8WAAAKcxcAAAqAAQAABH4BAAAEKhp+
+AgAABCoeAoACAAAEKhp+AwAABCoeAigYAAAKKi5zCAAABoADAAAEKkJTSkIBAAEAAAAAAAwAAAB2
+NC4wLjMwMzE5AAAAAAUAbAAAAIwDAAAjfgAA+AMAABwFAAAjU3RyaW5ncwAAAAAUCQAAPAIAACNV
+UwBQCwAAEAAAACNHVUlEAAAAYAsAAHQBAAAjQmxvYgAAAAAAAAACAAABVx2gAQkDAAAA+gEzABYA
+AAEAAAAcAAAABQAAAAYAAAAJAAAAAQAAABgAAAACAAAAEAAAAAIAAAADAAAABAAAAAEAAAADAAAA
+AQAAAAEAAAAAADADAQAAAAAABgDIAf4DBgBXAv4DBgAUAesDDwB5BAAABgBBAawDBgCrAawDBgCM
+AawDBgA+AqwDBgDoAawDBgABAqwDBgBYAawDBgBzAXsCCgAcAt8CCgCTAN8CBgBmA18DBgD3AOsD
+BgDlBF8DBgDOAx4EBgC+A5cDDgDHABoDDgAoARoDDgCvAIIDBgDcAP4DBgBZAAoACgAIA98CBgBe
+AF8DBgA1AF8DBgALBawDAAAAAAEAAAAAAAEAAQABABAAdwOVAjkAAQABAAAAEAAlBIgERQABAAMA
+AAEQAL4EiARZAAMABwADAQAA1wQAAD0ABAAKABEAawNWABEAgwBaABEAJQBeAAYGFABiAFaAxwRl
+AFaAYwBlAFAgAAAAAIYAfQMGAAEAbiAAAAAAhhjeAwYAAQB2IAAAAACDGN4DBgABAH4gAAAAAJMI
+ygNpAAEAqiAAAAAAkwhrAG4AAQCxIAAAAACTCHcAcwABALkgAAAAAJYI7AR5AAIAwCAAAAAAhhje
+AwYAAgDIIAAAAACRGOQDfgACAAAAAQB1AgkA3gMBABEA3gMGABkA3gMKACkA3gMQADEA3gMQADkA
+3gMQAEEA3gMQAEkA3gMQAFEA3gMQAFkA3gMQAGEA3gMQAGkA3gMGAIEA3gMGAKkA3gMVALkA3gMG
+AMEAFAUbAHEAzwQiAMkA+AQBAHEA3gMGAIkA3gMGANEARwAnANEABwUuAJEA3gMzALEA3gMGAAgA
+FABMAAgAGABRACkAcwC5AC4ACwCRAC4AEwCaAC4AGwC5AC4AIwDCAC4AKwDyAC4AMwDyAC4AOwD4
+AC4AQwDCAC4ASwAHAS4AUwDyAC4AWwAnAUMAYwBRAEkAcwC5AGEAewBRAGMAawBRAAMAAQAEAAMA
+AADOA4IAAACLAIcAAADwBIwAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAADBHOpRAAAA
+AAAAlQIAAAQAAAAAAAAAAAAAADoAHAAAAAAADgAAAAAAAAAAAAAAQwDAAgAAAAAEAAAAAAAAAAAA
+AAA6AF8DAAAAAAAAAAABAAAALwQAAAUAAgAAAAAAADxNb2R1bGU+AFN5c3RlbS5JTwB2YWx1ZV9f
+AG1zY29ybGliAGRlZmF1bHRJbnN0YW5jZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhh
+bmRsZQBGaWxlAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1
+bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
+AEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2Vy
+Tm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVB
+dHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0
+ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
+AEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
+YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUA
+U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
+ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJz
+aW9uaW5nAFNUX2VjMTg3MWY5ZDk5MDRlOTE4MjU0NDA3ZDc1YTBkODU0LmNzcHJvagBNaWNyb3Nv
+ZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2Ny
+aXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfZWMxODcx
+ZjlkOTkwNGU5MTgyNTQ0MDdkNzVhMGQ4NTQuY3Nwcm9qLmRsbABTeXN0ZW0ARW51bQByZXNvdXJj
+ZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAEN1bHR1cmVJbmZvAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0b3IA
+LmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2Vz
+AFN5c3RlbS5SZXNvdXJjZXMAU1RfZWMxODcxZjlkOTkwNGU5MTgyNTQ0MDdkNzVhMGQ4NTQuY3Nw
+cm9qLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF9lYzE4
+NzFmOWQ5OTA0ZTkxODI1NDQwN2Q3NWEwZDg1NC5jc3Byb2ouUHJvcGVydGllcwBTZXR0aW5ncwBT
+dWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBPYmplY3QAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tS
+ZXN1bHQAZ2V0X0Fzc2VtYmx5AENvcHkAAAAAAIDXXABcAGUAbgB0AGUAcgBwAHIAaQBzAGUAXABz
+AGEAbABlAHMAcwB5AHMAdABlAG0AcwBcAFIAZQBwAG8AcgB0AHMAXABJAG4AdABlAHIAbgBhAGwA
+UgBlAHAAbwByAHQAaQBuAGcAXABGAHIAZQBxAHUAZQBuAHQARgBpAHQAbgBlAHMAcwBcADMATQBJ
+AG0AcAB1AHQAZQBkAEkAbgBjAG8AbQBlAFwAQgBpAG4AXAAzAE0ASQBtAHAAdQB0AGUAZABJAG4A
+YwBvAG0AZQAuAHAAcgBuAACA31wAXABlAG4AdABlAHIAcAByAGkAcwBlAFwAcwBhAGwAZQBzAHMA
+eQBzAHQAZQBtAHMAXABSAGUAcABvAHIAdABzAFwASQBuAHQAZQByAG4AYQBsAFIAZQBwAG8AcgB0
+AGkAbgBnAFwARgByAGUAcQB1AGUAbgB0AEYAaQB0AG4AZQBzAHMAXAAzAE0ASQBtAHAAdQB0AGUA
+ZABJAG4AYwBvAG0AZQBcAEIAaQBuAFwAMwBNAEkAbQBwAHUAdABlAGQASQBuAGMAbwBtAGUAXwBO
+AGUAdwAuAHAAcgBuAAB/UwBUAF8AZQBjADEAOAA3ADEAZgA5AGQAOQA5ADAANABlADkAMQA4ADIA
+NQA0ADQAMAA3AGQANwA1AGEAMABkADgANQA0AC4AYwBzAHAAcgBvAGoALgBQAHIAbwBwAGUAcgB0
+AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAACxJpgSchFdR6Nu+iNQkhpPAAQgAQEIAyAAAQUg
+AQEREQQgAQEOBSABARFRBgADAQ4OAgQgABJlBgABEmkRbQQgABJxBiACAQ4ScQi3elxWGTTgiQiJ
+hF3NgIDMkQQAAAAABAEAAAADBhJJAwYSTQMGEhACBggDBhEUBAAAEkkEAAASTQUAAQESTQQAABIQ
+AwAAAQQIABJJBAgAEk0ECAASEAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93
+cwEIAQACAAAAAAAvAQAqU1RfZWMxODcxZjlkOTkwNGU5MTgyNTQ0MDdkNzVhMGQ4NTQuY3Nwcm9q
+AAAFAQAAAAAOAQAJTWljcm9zb2Z0AAAfAQAaQ29weXJpZ2h0IEAgTWljcm9zb2Z0IDIwMTIAAEkB
+ABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5F
+VCBGcmFtZXdvcmsgNC41AAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291
+cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1
+YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVz
+b3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAIguAAAAAAAAAAAAAKIuAAAAIAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAACULgAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/
+JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAAH4EAAAAAAAAAAAAAH4ENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQDqUcEcAAABAOpRwRw/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsATeAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAC6AwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAANAAKAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAH4AKwABAEYAaQBsAGUARABlAHMA
+YwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwBlAGMAMQA4ADcAMQBmADkAZAA5ADkAMAA0AGUAOQAx
+ADgAMgA1ADQANAAwADcAZAA3ADUAYQAwAGQAOAA1ADQALgBjAHMAcAByAG8AagAAAAAAPgAPAAEA
+RgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA3ADAAAAAA
+AH4ALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AZQBjADEAOAA3ADEAZgA5AGQA
+OQA5ADAANABlADkAMQA4ADIANQA0ADQAMAA3AGQANwA1AGEAMABkADgANQA0AC4AYwBzAHAAcgBv
+AGoALgBkAGwAbAAAAAAAWgAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAyAAAAAAAqAAEAAQBM
+AGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAIYALwABAE8AcgBpAGcAaQBuAGEA
+bABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwBlAGMAMQA4ADcAMQBmADkAZAA5ADkAMAA0AGUAOQAx
+ADgAMgA1ADQANAAwADcAZAA3ADUAYQAwAGQAOAA1ADQALgBjAHMAcAByAG8AagAuAGQAbABsAAAA
+AAB2ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfAGUAYwAxADgANwAxAGYAOQBk
+ADkAOQAwADQAZQA5ADEAOAAyADUANAA0ADAANwBkADcANQBhADAAZAA4ADUANAAuAGMAcwBwAHIA
+bwBqAAAAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADcAMwA2
+ADEALgAyADAAOQA3ADAAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA3ADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAAC0PgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\3M Inputed Income Report\Copy prn to Prod Folder"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{A61F6F24-1B56-4EF6-B896-DE39301590AA}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copy prn to Prod Folder"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_83c9e5b630cb4753a69dbe8743b53d62"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp">
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties.Settings.get_Default():ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+
+namespace ST_83c9e5b630cb4753a69dbe8743b53d62.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+        public void Main()
+        {
+            string FileNamePrefix = DateTime.Now.AddMonths(-1).ToString("yyyyMM") + "01" + ".prn";
+
+            File.Copy("\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\3MImputedIncome\\Bin\\3MImputedIncome.prn", "\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\3MImputedIncome\\" + "3m_HP_Fitness_Discount_" + FileNamePrefix, true);
+            File.Copy("\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\3MImputedIncome\\Bin\\3MImputedIncome.prn", "\\\\hpstore2\\3M Frequent Fitness\\" + "3m_HP_Fitness_Discount_" + FileNamePrefix, true);
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="st_83c9e5b630cb4753a69dbe8743b53d62.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_83c9e5b630cb4753a69dbe8743b53d62.csproj</RootNamespace>
+    <AssemblyName>ST_83c9e5b630cb4753a69dbe8743b53d62.csproj</AssemblyName>
+    <ProjectGuid>{791DACA0-FCBF-40AA-8158-41153467958C}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_83c9e5b630cb4753a69dbe8743b53d62</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_83c9e5b630cb4753a69dbe8743b53d62</msb:DisplayName>
+    <msb:ProjectId>{65A0F893-A0A2-4747-BA10-C4955E440E79}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_83c9e5b630cb4753a69dbe8743b53d62.csproj" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_83c9e5b630cb4753a69dbe8743b53d62.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_83c9e5b630cb4753a69dbe8743b53d62.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2012")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_83c9e5b630cb4753a69dbe8743b53d62.csproj.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAECtVl4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAA8i8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKAvAABPAAAAAEAAANwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA+A8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAANwEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADU
+LwAAAAAAAEgAAAACAAUAJCEAAMQNAAABAAAAAAAAAOguAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwAwBfAAAAAQAAESgQAAAKCxIBFSgRAAAKCxIBcgEAAHAo
+EgAACnIPAABwKBMAAAoKch0AAHBy9gAAcAYoEwAAChcoFAAACnIdAABwcs8BAHAGKBMAAAoXKBQA
+AAoCKBUAAAoWbxYAAAoqHgIoFwAACioeAigYAAAKKq5+AQAABC0ecj0CAHDQAwAAAigZAAAKbxoA
+AApzGwAACoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKh4CKBwAAAoqLnMIAAAGgAMA
+AAQqAAAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAtAMAACN+AAAgBAAARAUA
+ACNTdHJpbmdzAAAAAGQJAADAAgAAI1VTACQMAAAQAAAAI0dVSUQAAAA0DAAAkAEAACNCbG9iAAAA
+AAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAAAQAAAB4AAAAFAAAABgAAAAkAAAABAAAAHAAAAAIAAAAQ
+AAAAAQAAAAIAAAADAAAABAAAAAEAAAADAAAAAQAAAAEAAAAAAEIDAQAAAAAABgDRARAEBgBgAhAE
+BgAdAf0DDwCLBAAABgBKAb4DBgC0Ab4DBgCVAb4DBgBHAr4DBgDxAb4DBgAKAr4DBgBhAb4DBgB8
+AYQCCgAlAvECCgCcAPECBgBeAHEDBgB4A3EDBgAAAf0DBgAIBXEDBgDgAzAEBgDQA6kDDgDQACwD
+DgAxASwDDgC4AJQDBgDlABAEBgCgAnEDBgBZAAoACgAaA/ECBgBnAHEDBgA1AHEDBgA2Bb4DAAAA
+AAEAAAAAAAEAAQABABAAiQOnAjkAAQABAAAAEAA3BJoESQABAAMAAAEQANAEmgRdAAMABwADAQAA
+8wQAAEEABAAKABEAfQNyABEAjAB2ABEAJQB6AAYGFAB+AFaA4wSBAFaAbACBAFAgAAAAAIYAjwMG
+AAEAuyAAAAAAhhjwAwYAAQDDIAAAAACDGPADBgABAMsgAAAAAJMI3AOFAAEA9yAAAAAAkwh0AIoA
+AQD+IAAAAACTCIAAjwABAAYhAAAAAJYIDwWVAAIADSEAAAAAhhjwAwYAAgAVIQAAAACRGPYDmgAC
+AAAAAQB+AgkA8AMBABEA8AMGABkA8AMKACkA8AMQADEA8AMQADkA8AMQAEEA8AMQAEkA8AMQAFEA
+8AMQAFkA8AMQAGEA8AMQAGkA8AMGAIkA8AMGALEA8AMVAMEA8AMGAHkAKgUhAHkA2QQmAHkAngIs
+AMkAAQUxANEAPwU3AHEA6wQ+ANkAGwUBAHEA8AMGAJEA8AMGAOEARwBDAOEAMgVKAJkA8ANPALkA
+8AMGAAgAFABoAAgAGABtACkAcwDVAC4ACwCtAC4AEwC2AC4AGwDVAC4AIwDeAC4AKwAOAS4AMwAO
+AS4AOwAUAS4AQwDeAC4ASwAjAS4AUwAOAS4AWwBDAUMAYwBtAEkAcwDVAGEAewBtAGMAawBtABsA
+AwABAAQAAwAAAOADngAAAJQAowAAABMFqAACAAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAA
+AMEc8FEAAAAAAACnAgAABAAAAAAAAAAAAAAAVgAcAAAAAAAOAAAAAAAAAAAAAABfANICAAAAAAQA
+AAAAAAAAAAAAAFYAcQMAAAAAAAAAAAEAAABBBAAABQACAAAAADxNb2R1bGU+AFN5c3RlbS5JTwB2
+YWx1ZV9fAG1zY29ybGliAGRlZmF1bHRJbnN0YW5jZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBl
+RnJvbUhhbmRsZQBGaWxlAERhdGVUaW1lAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3Vs
+dHVyZQByZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0
+aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0
+cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBF
+ZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRy
+YWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1
+cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25S
+ZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5
+cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5
+Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBTeXN0
+ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAFNUXzgzYzllNWI2MzBjYjQ3NTNhNjlkYmU4
+NzQzYjUzZDYyLmNzcHJvagBNaWNyb3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0
+LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0u
+Q29tcG9uZW50TW9kZWwAU1RfODNjOWU1YjYzMGNiNDc1M2E2OWRiZTg3NDNiNTNkNjIuY3Nwcm9q
+LmRsbABTeXN0ZW0ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0
+aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEN1bHR1cmVJbmZvAGdl
+dF9SZXNvdXJjZU1hbmFnZXIALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0u
+UnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfODNjOWU1YjYzMGNi
+NDc1M2E2OWRiZTg3NDNiNTNkNjIuY3Nwcm9qLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNl
+cwBEZWJ1Z2dpbmdNb2RlcwBTVF84M2M5ZTViNjMwY2I0NzUzYTY5ZGJlODc0M2I1M2Q2Mi5jc3By
+b2ouUHJvcGVydGllcwBTZXR0aW5ncwBBZGRNb250aHMAU3VjY2VzcwBnZXRfRHRzAFNjcmlwdFJl
+c3VsdHMAQ29uY2F0AE9iamVjdABnZXRfRGVmYXVsdABzZXRfVGFza1Jlc3VsdABnZXRfTm93AGdl
+dF9Bc3NlbWJseQBDb3B5AAANeQB5AHkAeQBNAE0AAA0wADEALgBwAHIAbgAAgNdcAFwAZQBuAHQA
+ZQByAHAAcgBpAHMAZQBcAHMAYQBsAGUAcwBzAHkAcwB0AGUAbQBzAFwAUgBlAHAAbwByAHQAcwBc
+AEkAbgB0AGUAcgBuAGEAbABSAGUAcABvAHIAdABpAG4AZwBcAEYAcgBlAHEAdQBlAG4AdABGAGkA
+dABuAGUAcwBzAFwAMwBNAEkAbQBwAHUAdABlAGQASQBuAGMAbwBtAGUAXABCAGkAbgBcADMATQBJ
+AG0AcAB1AHQAZQBkAEkAbgBjAG8AbQBlAC4AcAByAG4AAIDXXABcAGUAbgB0AGUAcgBwAHIAaQBz
+AGUAXABzAGEAbABlAHMAcwB5AHMAdABlAG0AcwBcAFIAZQBwAG8AcgB0AHMAXABJAG4AdABlAHIA
+bgBhAGwAUgBlAHAAbwByAHQAaQBuAGcAXABGAHIAZQBxAHUAZQBuAHQARgBpAHQAbgBlAHMAcwBc
+ADMATQBJAG0AcAB1AHQAZQBkAEkAbgBjAG8AbQBlAFwAMwBtAF8ASABQAF8ARgBpAHQAbgBlAHMA
+cwBfAEQAaQBzAGMAbwB1AG4AdABfAABtXABcAGgAcABzAHQAbwByAGUAMgBcADMATQAgAEYAcgBl
+AHEAdQBlAG4AdAAgAEYAaQB0AG4AZQBzAHMAXAAzAG0AXwBIAFAAXwBGAGkAdABuAGUAcwBzAF8A
+RABpAHMAYwBvAHUAbgB0AF8AAH9TAFQAXwA4ADMAYwA5AGUANQBiADYAMwAwAGMAYgA0ADcANQAz
+AGEANgA5AGQAYgBlADgANwA0ADMAYgA1ADMAZAA2ADIALgBjAHMAcAByAG8AagAuAFAAcgBvAHAA
+ZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAAAEVQT3JglAECvtfhrhJqQ4QAEIAEB
+CAMgAAEFIAEBEREEIAEBDgUgAQERVQUHAg4RPQQAABE9BSABET0IBCABDg4FAAIODg4GAAMBDg4C
+BCAAEm0GAAEScRF1BCAAEnkGIAIBDhJ5CLd6XFYZNOCJCImEXc2AgMyRBAAAAAAEAQAAAAMGEk0D
+BhJRAwYSEAIGCAMGERQEAAASTQQAABJRBQABARJRBAAAEhADAAABBAgAEk0ECAASUQQIABIQCAEA
+CAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAAC8BACpTVF84M2M5
+ZTViNjMwY2I0NzUzYTY5ZGJlODc0M2I1M2Q2Mi5jc3Byb2oAAAUBAAAAAA4BAAlNaWNyb3NvZnQA
+AB8BABpDb3B5cmlnaHQgQCBNaWNyb3NvZnQgMjAxMgAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lv
+bj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjUAAAC0AAAA
+zsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBW
+ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYx
+OTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBB
+RFBBRFC0AAAAyC8AAAAAAAAAAAAA4i8AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAANQvAAAAAAAA
+AAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAAH4EAAAAAAAAAAAAAH4ENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQDwUcEcAAABAPBRwRw/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsATeAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAC6AwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAANAAKAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAH4AKwABAEYAaQBsAGUARABlAHMA
+YwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwA4ADMAYwA5AGUANQBiADYAMwAwAGMAYgA0ADcANQAz
+AGEANgA5AGQAYgBlADgANwA0ADMAYgA1ADMAZAA2ADIALgBjAHMAcAByAG8AagAAAAAAPgAPAAEA
+RgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA3ADYAAAAA
+AH4ALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AOAAzAGMAOQBlADUAYgA2ADMA
+MABjAGIANAA3ADUAMwBhADYAOQBkAGIAZQA4ADcANAAzAGIANQAzAGQANgAyAC4AYwBzAHAAcgBv
+AGoALgBkAGwAbAAAAAAAWgAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAyAAAAAAAqAAEAAQBM
+AGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAIYALwABAE8AcgBpAGcAaQBuAGEA
+bABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwA4ADMAYwA5AGUANQBiADYAMwAwAGMAYgA0ADcANQAz
+AGEANgA5AGQAYgBlADgANwA0ADMAYgA1ADMAZAA2ADIALgBjAHMAcAByAG8AagAuAGQAbABsAAAA
+AAB2ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfADgAMwBjADkAZQA1AGIANgAz
+ADAAYwBiADQANwA1ADMAYQA2ADkAZABiAGUAOAA3ADQAMwBiADUAMwBkADYAMgAuAGMAcwBwAHIA
+bwBqAAAAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADcAMwA2
+ADEALgAyADAAOQA3ADYAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA3ADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAAD0PwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\3M Inputed Income Report\Imputed Income"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{085F5091-D103-4DD9-BB73-985732EE302C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Imputed Income"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87ABD9C0-6788-4E6A-BAD9-2A0C9F902BAE}"
+              SQLTask:SqlStatementSource="EXEC [output].[ImputedIncomeData]  &quot;3190&quot;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\3M Inputed Income Report\Imputed Income 3M Output"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{ADD27149-4CBE-433D-A285-3B4925B6B9DA}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Imputed Income 3M Output"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              version="1">
+              <components>
+                <component
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[EmpId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="EmpId"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmpId]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[SSN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="SSN"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[ImputedAmount]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="33"
+                          cachedName="ImputedAmount"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmount]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[ReportMonth]"
+                          cachedDataType="dbDate"
+                          cachedName="ReportMonth"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReportMonth]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[ph_FirstName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ph_FirstName"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_FirstName]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[ph_LastName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ph_LastName"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_LastName]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input].Columns[ImputedAmountDecimals]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="ImputedAmountDecimals"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmountDecimals]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EmpId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EmpId]"
+                          name="Copy of EmpId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmpId]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of SSN]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of SSN]"
+                          name="Copy of SSN"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImputedAmount]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImputedAmount]"
+                          name="Copy of ImputedAmount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ReportMonth]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ReportMonth]"
+                          name="Copy of ReportMonth"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReportMonth]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ph_FirstName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ph_FirstName]"
+                          name="Copy of ph_FirstName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_FirstName]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ph_LastName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ph_LastName]"
+                          name="Copy of ph_LastName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_LastName]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImputedAmountDecimals]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImputedAmountDecimals]"
+                          name="Copy of ImputedAmountDecimals"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmountDecimals]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Flat File Destination"
+                  localeId="1033"
+                  name="Flat File Destination">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether the data will overwrite or append to the destination file."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the text to write to the destination file before any data is written."
+                      expressionType="Notify"
+                      name="Header" />
+                    <property
+                      dataType="System.Boolean"
+                      description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                      name="EscapeQualifier">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[3MReport_FlatFileConnection]"
+                      connectionManagerRefId="Package.ConnectionManagers[3MReport_FlatFileConnection]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input]"
+                      hasSideEffects="true"
+                      name="Flat File Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of SSN]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of SSN"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 1]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of SSN]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of ImputedAmount]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of ImputedAmount"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 2]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImputedAmount]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of ImputedAmountDecimals]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of ImputedAmountDecimals"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 3]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImputedAmountDecimals]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of ReportMonth]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of ReportMonth"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 4]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ReportMonth]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of ph_FirstName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of ph_FirstName"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 5]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ph_FirstName]" />
+                        <inputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of ph_LastName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of ph_LastName"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 6]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ph_LastName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="Column 0" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="16"
+                          name="Column 1" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="Column 2" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          name="Column 3" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 4]"
+                          codePage="1252"
+                          dataType="str"
+                          length="16"
+                          name="Column 4" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 5]"
+                          codePage="1252"
+                          dataType="str"
+                          length="14"
+                          name="Column 5" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 6]"
+                          codePage="1252"
+                          dataType="str"
+                          length="31"
+                          name="Column 6" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 7]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Column 7" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Column 8]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Column 8" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">[output].[ImputedIncome_3M]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[FrequentFitness]"
+                      connectionManagerRefId="Package.ConnectionManagers[FrequentFitness]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmpId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmpId]"
+                          length="8"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmpId]"
+                          name="EmpId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                          length="9"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]"
+                          name="SSN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmount]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImputedAmount]"
+                          length="33"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmount]"
+                          name="ImputedAmount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReportMonth]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReportMonth]"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReportMonth]"
+                          name="ReportMonth"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_FirstName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ph_FirstName]"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_FirstName]"
+                          name="ph_FirstName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_LastName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ph_LastName]"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ph_LastName]"
+                          name="ph_LastName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmountDecimals]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImputedAmountDecimals]"
+                          length="3"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImputedAmountDecimals]"
+                          name="ImputedAmountDecimals"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmpId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="EmpId" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          name="SSN" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImputedAmount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="33"
+                          name="ImputedAmount" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReportMonth]"
+                          dataType="wstr"
+                          length="10"
+                          name="ReportMonth" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ph_FirstName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ph_FirstName" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ph_LastName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ph_LastName" />
+                        <externalMetadataColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImputedAmountDecimals]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="ImputedAmountDecimals" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmpId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmpId]"
+                          name="EmpId" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                          name="SSN" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImputedAmount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="33"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImputedAmount]"
+                          name="ImputedAmount" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImputedAmountDecimals]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImputedAmountDecimals]"
+                          name="ImputedAmountDecimals" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReportMonth]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReportMonth]"
+                          name="ReportMonth" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ph_FirstName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ph_FirstName]"
+                          name="ph_FirstName" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ph_LastName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ph_LastName]"
+                          name="ph_LastName" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RowCount3M</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output.Paths[Data Conversion Output]"
+                  endId="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count.Inputs[Row Count Input 1]"
+                  name="Data Conversion Output"
+                  startId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output.Paths[OLE DB Source Output]"
+                  endId="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\3M Inputed Income Report\Imputed Income 3M Output.Paths[Row Count Output 1]"
+                  endId="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination.Inputs[Flat File Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\3M Inputed Income Report.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2F048E9F-D58F-4777-A629-43D7DA024B33}"
+          DTS:From="Package\3M Inputed Income Report\Copy prn Template"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\3M Inputed Income Report\Imputed Income 3M Output" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\3M Inputed Income Report.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{27AA4BDF-8BC5-4B59-9F19-95567047864E}"
+          DTS:From="Package\3M Inputed Income Report\Imputed Income"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\3M Inputed Income Report\Copy prn Template" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\3M Inputed Income Report.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{202642AB-8AFD-4A42-B48E-999BE60025B4}"
+          DTS:From="Package\3M Inputed Income Report\Imputed Income 3M Output"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\3M Inputed Income Report\Copy prn to Prod Folder" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Email Message"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{0B240A95-B1BD-442D-BB0C-943CE8FA8977}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Email Message"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_bfe99458f22d4bc1b3eaf1b4c4542fcb"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::RowCount3M"
+          ReadWriteVariables="User::ExternalEmailMsg">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_a064f10099db43ffabf3f2b4e98c96ad.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_a064f10099db43ffabf3f2b4e98c96ad.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2013")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties.Settings.get_Default():ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+
+namespace ST_a064f10099db43ffabf3f2b4e98c96ad.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+        public void Main()
+        {
+            Dts.Variables["User::ExternalEmailMsg"].Value = String.Concat("Total Record Count: ", Dts.Variables["User::RowCount3M"].Value);
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_bfe99458f22d4bc1b3eaf1b4c4542fcb</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_bfe99458f22d4bc1b3eaf1b4c4542fcb</msb:DisplayName>
+    <msb:ProjectId>{A848978C-DA92-4A91-A399-597819923807}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_bfe99458f22d4bc1b3eaf1b4c4542fcb.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="st_bfe99458f22d4bc1b3eaf1b4c4542fcb.csproj"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_a064f10099db43ffabf3f2b4e98c96ad.csproj</RootNamespace>
+    <AssemblyName>st_bfe99458f22d4bc1b3eaf1b4c4542fcb</AssemblyName>
+    <ProjectGuid>{45A0B776-B4C9-401B-B2FE-EC5BE5522994}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_a064f10099db43ffabf3f2b4e98c96ad.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="st_bfe99458f22d4bc1b3eaf1b4c4542fcb.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAEutVl4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAfi4A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACwuAABPAAAAAEAAALwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAhA4AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAALwEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABg
+LgAAAAAAAEgAAAACAAUAECEAAGQMAAABAAAAAAAAAHQtAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBABLAAAAAAAAAAIoEAAACm8RAAAKcgEAAHBvEgAACnIv
+AABwAigQAAAKbxEAAApyWQAAcG8SAAAKbxMAAAooFAAACm8VAAAKAigQAAAKFm8WAAAKKh4CKBcA
+AAoqHgIoGAAACiqufgEAAAQtHnJ7AABw0AMAAAIoGQAACm8aAAAKcxsAAAqAAQAABH4BAAAEKhp+
+AgAABCoeAoACAAAEKhp+AwAABCoeAigcAAAKKi5zCAAABoADAAAEKgAAAEJTSkIBAAEAAAAAAAwA
+AAB2NC4wLjMwMzE5AAAAAAUAbAAAAMQDAAAjfgAAMAQAAKQFAAAjU3RyaW5ncwAAAADUCQAA/AAA
+ACNVUwDQCgAAEAAAACNHVUlEAAAA4AoAAIQBAAAjQmxvYgAAAAAAAAACAAABVx2gAQkDAAAA+gEz
+ABYAAAEAAAAeAAAABQAAAAYAAAAJAAAAAQAAABwAAAACAAAAEAAAAAIAAAADAAAABAAAAAEAAAAE
+AAAAAQAAAAEAAAAAAKgDAQAAAAAABgAlAngEBgC0AngEBgBxAWUEDwDzBAAABgCeASYEBgAIAiYE
+BgDpASYEBgCbAiYEBgBFAiYEBgBeAiYEBgC1ASYEBgDQAewCCgB5AlcDCgDwAFcDBgDgA9kDBgBU
+AWUEBgB0BdkDBgBIBJgEBgA4BBEEDgAkAZIDDgCFAZIDDgAMAfwDBgA5AXgECgCAA1cDEgA8BZsA
+EgBuAJsABgAGA9kDBgC7ANkDBgB3ANkDBgCaBSYEAAAAAAEAAAAAAAEAAQABABAA8QMNAzkAAQAB
+AAAAEACfBAIFRQABAAMAAAEQAEYFAgVZAAMABwADAQAAXwUAAD0ABAAKABEA5QNpABEA4ABtABEA
+XgBxAAYGKQB1AFaATwV4AFaAwAB4AFAgAAAAAIYA9wMGAAEApyAAAAAAhhhYBAYAAQCvIAAAAACD
+GFgEBgABALcgAAAAAJMIRAR8AAEA4yAAAAAAkwjIAIEAAQDqIAAAAACTCNQAhgABAPIgAAAAAJYI
+ewWMAAIA+SAAAAAAhhhYBAYAAgABIQAAAACRGF4EkQACAAAAAQDmAgkAWAQBABEAWAQGABkAWAQK
+ACkAWAQQADEAWAQQADkAWAQQAEEAWAQQAEkAWAQQAFEAWAQQAFkAWAQQAGEAWAQQAGkAWAQGAIEA
+WAQGAKkAWAQVALkAWAQGAHEAVwUbAMEAOAUgAMkA0AMlANEA0gIrANkAbQUvANEA3AI1AMEAhwUB
+AHEAWAQGAIkAWAQGAOEAiQA6AOEAlgVBAJEAWARGALEAWAQGAAgAFABfAAgAGABkACkAcwDMAC4A
+CwCkAC4AEwCtAC4AGwDMAC4AIwDVAC4AKwAFAS4AMwAFAS4AOwALAS4AQwDVAC4ASwAaAS4AUwAF
+AS4AWwA6AUMAYwBkAEkAcwDMAGEAewBkAGMAawBkAAMAAQAEAAMAAABIBJUAAADoAJoAAAB/BZ8A
+AgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAADBHPVRAAAAAAAAMQAAAAQAAAAAAAAAAAAA
+AE0AVQAAAAAADgAAAAAAAAAAAAAAVgA4AwAAAAAEAAAAAAAAAAAAAABNANkDAAAAAA4AAAAAAAAA
+AAAAAFYACgAAAAAAAAAAAAEAAACpBAAABQACAAAAAAAAPE1vZHVsZT4ATWljcm9zb2Z0LlNxbFNl
+cnZlci5NYW5hZ2VkRFRTAHZhbHVlX18Ac3RfYmZlOTk0NThmMjJkNGJjMWIzZWFmMWI0YzQ1NDJm
+Y2IAbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAFZhcmlhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdl
+dFR5cGVGcm9tSGFuZGxlAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAVHlwZQBGYWls
+dXJlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBWU1RBUlRTY3JpcHRP
+YmplY3RNb2RlbEJhc2UAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARWRpdG9yQnJvd3NhYmxlU3Rh
+dGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0
+ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRp
+dGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0
+dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlv
+bkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVj
+dEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5
+UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmls
+aXR5QXR0cmlidXRlAGdldF9WYWx1ZQBzZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVy
+c2lvbmluZwBTdHJpbmcAU1RfYTA2NGYxMDA5OWRiNDNmZmFiZjNmMmI0ZTk4Yzk2YWQuY3Nwcm9q
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5U
+YXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABz
+dF9iZmU5OTQ1OGYyMmQ0YmMxYjNlYWYxYjRjNDU0MmZjYi5kbGwAZ2V0X0l0ZW0AU3lzdGVtAEVu
+dW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xv
+YmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBDdWx0dXJlSW5mbwBnZXRfUmVzb3VyY2VNYW5h
+Z2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGls
+ZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUX2EwNjRmMTAwOTlkYjQzZmZhYmYzZjJiNGU5
+OGM5NmFkLmNzcHJvai5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9k
+ZXMAU1RfYTA2NGYxMDA5OWRiNDNmZmFiZjNmMmI0ZTk4Yzk2YWQuY3Nwcm9qLlByb3BlcnRpZXMA
+Z2V0X1ZhcmlhYmxlcwBTZXR0aW5ncwBTdWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBDb25j
+YXQAT2JqZWN0AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AGdldF9Bc3NlbWJseQAAAC1VAHMA
+ZQByADoAOgBFAHgAdABlAHIAbgBhAGwARQBtAGEAaQBsAE0AcwBnAAApVABvAHQAYQBsACAAUgBl
+AGMAbwByAGQAIABDAG8AdQBuAHQAOgAgAAAhVQBzAGUAcgA6ADoAUgBvAHcAQwBvAHUAbgB0ADMA
+TQAAf1MAVABfAGEAMAA2ADQAZgAxADAAMAA5ADkAZABiADQAMwBmAGYAYQBiAGYAMwBmADIAYgA0
+AGUAOQA4AGMAOQA2AGEAZAAuAGMAcwBwAHIAbwBqAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIA
+ZQBzAG8AdQByAGMAZQBzAAAAcpMB3FXXvk+OCFcuQvlQYwAEIAEBCAMgAAEFIAEBEREEIAEBDgUg
+AQERUQQgABJhBCAAEmUFIAESaRwDIAAcBQACDhwcBCABARwGAAEScRF1BCAAEnkGIAIBDhJ5CLd6
+XFYZNOCJCImEXc2AgMyRBAAAAAAEAQAAAAMGEkkDBhJNAwYSEAIGCAMGERQEAAASSQQAABJNBQAB
+ARJNBAAAEhADAAABBAgAEkkECAASTQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0
+aW9uVGhyb3dzAQgBAAIAAAAAAC8BACpTVF9hMDY0ZjEwMDk5ZGI0M2ZmYWJmM2YyYjRlOThjOTZh
+ZC5jc3Byb2oAAAUBAAAAAA4BAAlNaWNyb3NvZnQAAB8BABpDb3B5cmlnaHQgQCBNaWNyb3NvZnQg
+MjAxMwAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5
+TmFtZRIuTkVUIEZyYW1ld29yayA0LjW0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMu
+UmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRp
+bWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAVC4AAAAAAAAAAAAAbi4AAAAgAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAGAuAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwA
+AAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAAF4EAAAAAAAAAAAAAF4ENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQD1UcEcAAABAPVRwRw/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAS+AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAACaAwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAANAAKAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAH4AKwABAEYAaQBsAGUARABlAHMA
+YwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwBhADAANgA0AGYAMQAwADAAOQA5AGQAYgA0ADMAZgBm
+AGEAYgBmADMAZgAyAGIANABlADkAOABjADkANgBhAGQALgBjAHMAcAByAG8AagAAAAAAPgAPAAEA
+RgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA4ADEAAAAA
+AHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAcwB0AF8AYgBmAGUAOQA5ADQANQA4AGYA
+MgAyAGQANABiAGMAMQBiADMAZQBhAGYAMQBiADQAYwA0ADUANAAyAGYAYwBiAC4AZABsAGwAAABa
+ABsAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAA
+IABNAGkAYwByAG8AcwBvAGYAdAAgADIAMAAxADMAAAAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBk
+AGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0A
+ZQAAAHMAdABfAGIAZgBlADkAOQA0ADUAOABmADIAMgBkADQAYgBjADEAYgAzAGUAYQBmADEAYgA0
+AGMANAA1ADQAMgBmAGMAYgAuAGQAbABsAAAAdgArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAA
+AABTAFQAXwBhADAANgA0AGYAMQAwADAAOQA5AGQAYgA0ADMAZgBmAGEAYgBmADMAZgAyAGIANABl
+ADkAOABjADkANgBhAGQALgBjAHMAcAByAG8AagAAAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUA
+cgBzAGkAbwBuAAAAMQAuADAALgA3ADMANgAxAC4AMgAwADkAOAAxAAAAAABGAA8AAQBBAHMAcwBl
+AG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADMANgAxAC4AMgAwADkAOAAxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAACAPgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Email to 3M"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{BEF4D507-0830-48A6-AE77-9B9C5022B0AC}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Email to 3M"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FB2A292B-03CA-41D7-9A6A-04C823FCB9DA}"
+          SendMailTask:From="Jyotsna.X.Vasireddy@HealthPartners.Com"
+          SendMailTask:To="specpay@mmm.com"
+          SendMailTask:CC="Jyotsna.X.Vasireddy@HealthPartners.Com;frequentfitnessadmin@HealthPartners.Com"
+          SendMailTask:Subject="Imputed Income Report - Record Count"
+          SendMailTask:MessageSourceType="Variable"
+          SendMailTask:MessageSource="User::ExternalEmailMsg" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{12CFE7F9-D779-4521-B33C-5658EEAB8745}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FB2A292B-03CA-41D7-9A6A-04C823FCB9DA}"
+          SendMailTask:From="SSISAlerts@HealthPartners.Com"
+          SendMailTask:To="Jyotsna.x.Vasireddy@HealthPartners.Com"
+          SendMailTask:Subject="3M Inputed Income"
+          SendMailTask:MessageSourceType="Variable"
+          SendMailTask:MessageSource="User::MessageBody" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{892DC096-6BEB-4151-B604-4E38868E0653}"
+      DTS:From="Package\3M Inputed Income Report"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Email Message" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{42C598B9-5730-48B7-B50D-5798836E0178}"
+      DTS:From="Package\3M Inputed Income Report"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Send Mail Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{5F17A21D-C9E8-48F5-90F3-3DCEBBE9E826}"
+      DTS:From="Package\Email Message"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Send Email to 3M" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,44"
+          Id="Package\3M Inputed Income Report\Copy prn Template"
+          TopLeft="19.0943396226414,90.1320754716981" />
+        <NodeLayout
+          Size="207,44"
+          Id="Package\3M Inputed Income Report\Copy prn to Prod Folder"
+          TopLeft="16.0754716981131,234.471698113208" />
+        <NodeLayout
+          Size="205,44"
+          Id="Package\3M Inputed Income Report\Imputed Income"
+          TopLeft="19.0566037735848,8.47169811320754" />
+        <NodeLayout
+          Size="204,44"
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output"
+          TopLeft="17.5849056603773,164.77358490566" />
+        <EdgeLayout
+          Id="Package\3M Inputed Income Report.PrecedenceConstraints[Constraint]"
+          TopLeft="121.396226415094,134.056603773585">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-2,30.7169811320754"
+              Start="0,0"
+              End="-2,23.2169811320754">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.3584905660377" />
+                  <mssgle:LineSegment
+                    End="-2,15.3584905660377" />
+                  <mssgle:LineSegment
+                    End="-2,23.2169811320754" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\3M Inputed Income Report.PrecedenceConstraints[Constraint 2]"
+          TopLeft="121.396226415094,52.3962264150944">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.7358490566037"
+              Start="0,0"
+              End="0,30.2358490566037">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.2358490566037" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\3M Inputed Income Report.PrecedenceConstraints[Constraint 6]"
+          TopLeft="119.396226415094,208.698113207547">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.7735849056604"
+              Start="0,0"
+              End="0,18.2735849056604">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.2735849056604" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="239,302"
+          Size="239,346"
+          Id="Package\3M Inputed Income Report"
+          TopLeft="0.5,56.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Email Message"
+          TopLeft="371.72641509434,266.141509433962" />
+        <NodeLayout
+          Size="273,44"
+          Id="Package\Send Email to 3M"
+          TopLeft="684.122641509434,264.330188679245" />
+        <NodeLayout
+          Size="271,51"
+          Id="Package\Send Mail Task"
+          TopLeft="360.160377358491,141.141509433962" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="239.5,286.987421383648">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.22641509434,0"
+              Start="0,0"
+              End="124.72641509434,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="124.72641509434,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="239.5,169.904088050314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.660377358491,0"
+              Start="0,0"
+              End="113.160377358491,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="113.160377358491,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="507.72641509434,287.235849056604">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176.396226415094,0"
+              Start="0,0"
+              End="168.896226415094,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="168.896226415094,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\3M Inputed Income Report\Imputed Income 3M Output">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output\Row Count"
+          TopLeft="360,217" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output\Data Conversion"
+          TopLeft="316.066037735849,82.4056603773585" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output\Flat File Destination"
+          TopLeft="72.4245283018868,378.216981132075" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output.Paths[OLE DB Source Output]"
+          TopLeft="73.3867924528302,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="310.566037735849,32.9811320754717"
+              Start="0,0"
+              End="310.566037735849,25.4811320754717">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.188679245283" />
+                  <mssgle:LineSegment
+                    End="310.566037735849,16.188679245283" />
+                  <mssgle:LineSegment
+                    End="310.566037735849,25.4811320754717" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output.Paths[Data Conversion Output]"
+          TopLeft="384.066037735849,126.405660377359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.933962264151,90.5943396226415"
+              Start="0,0"
+              End="41.933962264151,83.0943396226415">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.2971698113207" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.2971698113207"
+                    Point2="0,45.2971698113207"
+                    Point3="4,45.2971698113207" />
+                  <mssgle:LineSegment
+                    End="37.933962264151,45.2971698113207" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.933962264151,45.2971698113207"
+                    Point2="41.933962264151,45.2971698113207"
+                    Point3="41.933962264151,49.2971698113207" />
+                  <mssgle:LineSegment
+                    End="41.933962264151,83.0943396226415" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\3M Inputed Income Report\Imputed Income 3M Output.Paths[Row Count Output 1]"
+          TopLeft="426,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-285.575471698113,119.216981132075"
+              Start="0,0"
+              End="-285.575471698113,111.716981132075">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.6084905660375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.6084905660375"
+                    Point2="0,59.6084905660375"
+                    Point3="-4,59.6084905660375" />
+                  <mssgle:LineSegment
+                    End="-281.575471698113,59.6084905660375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-281.575471698113,59.6084905660375"
+                    Point2="-285.575471698113,59.6084905660375"
+                    Point3="-285.575471698113,63.6084905660375" />
+                  <mssgle:LineSegment
+                    End="-285.575471698113,111.716981132075" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\3M Inputed Income Report\Imputed Income 3M Output\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

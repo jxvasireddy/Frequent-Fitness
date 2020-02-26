@@ -1,0 +1,2529 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/2/2012 3:10:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN7-2S758P1"
+  DTS:CreatorName="HEALTHPARTNERS\iazatuchny"
+  DTS:DTSID="{31C1B31D-FB64-4AF5-A530-D92FC0B2FDCB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Output - 2 - SIBillingReport"
+  DTS:PackageType="5"
+  DTS:VersionBuild="181"
+  DTS:VersionGUID="{DFC581D1-66C3-40CA-B71E-800027F292B4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FrequentFitness]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{07DEA644-378B-4B75-89CB-07AEA47E555C}"
+      DTS:ObjectName="FrequentFitness">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::FrequentFitness]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=hpmsssqlprd;Initial Catalog=FrequentFitness;Provider=SQLOLEDB;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SIBilling_ExcelConnection]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C02649B0-7466-4757-AC53-C6FD28E46126}"
+      DTS:ObjectName="SIBilling_ExcelConnection">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\enterprise\salessystems\Reports\InternalReporting\FrequentFitness\SelfInsuredInvoiceSummary\Bin\SIGroupInvoiceBillingSpreadsheet_Template.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A88BD45A-FCB2-486A-A5C9-5894C88AC908}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FinishedProcess">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{70C4C9AA-F1D3-4F9F-9B34-1E3CED9349BB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MessageBody">
+      <DTS:VariableValue
+        DTS:DataType="8">3m Billing Report is posted to \\\\hpstore2\\3M Frequent Fitness</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{86C21F83-FBAB-4EEB-9816-D999669E2B07}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFTP">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SI Billing Report"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1D2F2CBC-4150-460D-8DEB-E4AD986521B5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SI Billing Report">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SI Billing Report\Copy Excel Template for SI output"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{B1F28F54-6891-4D7B-BEAE-A9A94A6B630E}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copy Excel Template for SI output"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_5800c401d08c42479e5960a8978ed95d"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp">
+              <ProjectItem
+                Name="st_5800c401d08c42479e5960a8978ed95d.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_5800c401d08c42479e5960a8978ed95d.csproj</RootNamespace>
+    <AssemblyName>ST_5800c401d08c42479e5960a8978ed95d.csproj</AssemblyName>
+    <ProjectGuid>{2ED6429F-3239-486B-9DCF-BB00A3897DB0}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties.Settings.get_Default():ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+
+namespace ST_5800c401d08c42479e5960a8978ed95d.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+        public void Main()
+        {
+            File.Copy("\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\SelfInsuredInvoiceSummary\\Bin\\SIGroupInvoiceBillingSpreadsheet_Template - Original.xlsx", "\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\SelfInsuredInvoiceSummary\\Bin\\SIGroupInvoiceBillingSpreadsheet_Template.xlsx", true);
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_5800c401d08c42479e5960a8978ed95d</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_5800c401d08c42479e5960a8978ed95d</msb:DisplayName>
+    <msb:ProjectId>{E3EF99CE-92B8-4C5D-AB07-9BD253604D7C}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_5800c401d08c42479e5960a8978ed95d.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_5800c401d08c42479e5960a8978ed95d.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_5800c401d08c42479e5960a8978ed95d.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2012")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_5800c401d08c42479e5960a8978ed95d.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_5800c401d08c42479e5960a8978ed95d.csproj.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGWtVl4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAVi8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAQvAABPAAAAAEAAANwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAXA8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAANwEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAA4
+LwAAAAAAAEgAAAACAAUA1CAAAHgNAAABAAAAAAAAAEwuAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHZyAQAAcHI6AQBwFygQAAAKAigRAAAKFm8SAAAKKh4CKBMA
+AAoqHgIoFAAACiqufgEAAAQtHnJdAgBw0AMAAAIoFQAACm8WAAAKcxcAAAqAAQAABH4BAAAEKhp+
+AgAABCoeAoACAAAEKhp+AwAABCoeAigYAAAKKi5zCAAABoADAAAEKkJTSkIBAAEAAAAAAAwAAAB2
+NC4wLjMwMzE5AAAAAAUAbAAAAIwDAAAjfgAA+AMAABwFAAAjU3RyaW5ncwAAAAAUCQAA4AIAACNV
+UwD0CwAAEAAAACNHVUlEAAAABAwAAHQBAAAjQmxvYgAAAAAAAAACAAABVx2gAQkDAAAA+gEzABYA
+AAEAAAAcAAAABQAAAAYAAAAJAAAAAQAAABgAAAACAAAAEAAAAAIAAAADAAAABAAAAAEAAAADAAAA
+AQAAAAEAAAAAADADAQAAAAAABgDIAf4DBgBXAv4DBgAUAesDDwB5BAAABgBBAawDBgCrAawDBgCM
+AawDBgA+AqwDBgDoAawDBgABAqwDBgBYAawDBgBzAXsCCgAcAt8CCgCTAN8CBgBmA18DBgD3AOsD
+BgDlBF8DBgDOAx4EBgC+A5cDDgDHABoDDgAoARoDDgCvAIIDBgDcAP4DBgBZAAoACgAIA98CBgBe
+AF8DBgA1AF8DBgALBawDAAAAAAEAAAAAAAEAAQABABAAdwOVAjkAAQABAAAAEAAlBIgERQABAAMA
+AAEQAL4EiARZAAMABwADAQAA1wQAAD0ABAAKABEAawNWABEAgwBaABEAJQBeAAYGFABiAFaAxwRl
+AFaAYwBlAFAgAAAAAIYAfQMGAAEAbiAAAAAAhhjeAwYAAQB2IAAAAACDGN4DBgABAH4gAAAAAJMI
+ygNpAAEAqiAAAAAAkwhrAG4AAQCxIAAAAACTCHcAcwABALkgAAAAAJYI7AR5AAIAwCAAAAAAhhje
+AwYAAgDIIAAAAACRGOQDfgACAAAAAQB1AgkA3gMBABEA3gMGABkA3gMKACkA3gMQADEA3gMQADkA
+3gMQAEEA3gMQAEkA3gMQAFEA3gMQAFkA3gMQAGEA3gMQAGkA3gMGAIEA3gMGAKkA3gMVALkA3gMG
+AMEAFAUbAHEAzwQiAMkA+AQBAHEA3gMGAIkA3gMGANEARwAnANEABwUuAJEA3gMzALEA3gMGAAgA
+FABMAAgAGABRACkAcwC5AC4ACwCRAC4AEwCaAC4AGwC5AC4AIwDCAC4AKwDyAC4AMwDyAC4AOwD4
+AC4AQwDCAC4ASwAHAS4AUwDyAC4AWwAnAUMAYwBRAEkAcwC5AGEAewBRAGMAawBRAAMAAQAEAAMA
+AADOA4IAAACLAIcAAADwBIwAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAADBHAJSAAAA
+AAAAlQIAAAQAAAAAAAAAAAAAADoAHAAAAAAADgAAAAAAAAAAAAAAQwDAAgAAAAAEAAAAAAAAAAAA
+AAA6AF8DAAAAAAAAAAABAAAALwQAAAUAAgAAAAAAADxNb2R1bGU+AFN5c3RlbS5JTwB2YWx1ZV9f
+AG1zY29ybGliAGRlZmF1bHRJbnN0YW5jZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhh
+bmRsZQBGaWxlAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1
+bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
+AEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2Vy
+Tm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVB
+dHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0
+ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
+AEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
+YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUA
+U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
+ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJz
+aW9uaW5nAFNUXzU4MDBjNDAxZDA4YzQyNDc5ZTU5NjBhODk3OGVkOTVkLmNzcHJvagBNaWNyb3Nv
+ZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2Ny
+aXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfNTgwMGM0
+MDFkMDhjNDI0NzllNTk2MGE4OTc4ZWQ5NWQuY3Nwcm9qLmRsbABTeXN0ZW0ARW51bQByZXNvdXJj
+ZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAEN1bHR1cmVJbmZvAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0b3IA
+LmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2Vz
+AFN5c3RlbS5SZXNvdXJjZXMAU1RfNTgwMGM0MDFkMDhjNDI0NzllNTk2MGE4OTc4ZWQ5NWQuY3Nw
+cm9qLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF81ODAw
+YzQwMWQwOGM0MjQ3OWU1OTYwYTg5NzhlZDk1ZC5jc3Byb2ouUHJvcGVydGllcwBTZXR0aW5ncwBT
+dWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBPYmplY3QAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tS
+ZXN1bHQAZ2V0X0Fzc2VtYmx5AENvcHkAAAAAAIE3XABcAGUAbgB0AGUAcgBwAHIAaQBzAGUAXABz
+AGEAbABlAHMAcwB5AHMAdABlAG0AcwBcAFIAZQBwAG8AcgB0AHMAXABJAG4AdABlAHIAbgBhAGwA
+UgBlAHAAbwByAHQAaQBuAGcAXABGAHIAZQBxAHUAZQBuAHQARgBpAHQAbgBlAHMAcwBcAFMAZQBs
+AGYASQBuAHMAdQByAGUAZABJAG4AdgBvAGkAYwBlAFMAdQBtAG0AYQByAHkAXABCAGkAbgBcAFMA
+SQBHAHIAbwB1AHAASQBuAHYAbwBpAGMAZQBCAGkAbABsAGkAbgBnAFMAcAByAGUAYQBkAHMAaABl
+AGUAdABfAFQAZQBtAHAAbABhAHQAZQAgAC0AIABPAHIAaQBnAGkAbgBhAGwALgB4AGwAcwB4AAGB
+IVwAXABlAG4AdABlAHIAcAByAGkAcwBlAFwAcwBhAGwAZQBzAHMAeQBzAHQAZQBtAHMAXABSAGUA
+cABvAHIAdABzAFwASQBuAHQAZQByAG4AYQBsAFIAZQBwAG8AcgB0AGkAbgBnAFwARgByAGUAcQB1
+AGUAbgB0AEYAaQB0AG4AZQBzAHMAXABTAGUAbABmAEkAbgBzAHUAcgBlAGQASQBuAHYAbwBpAGMA
+ZQBTAHUAbQBtAGEAcgB5AFwAQgBpAG4AXABTAEkARwByAG8AdQBwAEkAbgB2AG8AaQBjAGUAQgBp
+AGwAbABpAG4AZwBTAHAAcgBlAGEAZABzAGgAZQBlAHQAXwBUAGUAbQBwAGwAYQB0AGUALgB4AGwA
+cwB4AAB/UwBUAF8ANQA4ADAAMABjADQAMAAxAGQAMAA4AGMANAAyADQANwA5AGUANQA5ADYAMABh
+ADgAOQA3ADgAZQBkADkANQBkAC4AYwBzAHAAcgBvAGoALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4A
+UgBlAHMAbwB1AHIAYwBlAHMAAAAAAL5VD/Owv7dMhG0reaGqufYABCABAQgDIAABBSABARERBCAB
+AQ4FIAEBEVEGAAMBDg4CBCAAEmUGAAESaRFtBCAAEnEGIAIBDhJxCLd6XFYZNOCJCImEXc2AgMyR
+BAAAAAAEAQAAAAMGEkkDBhJNAwYSEAIGCAMGERQEAAASSQQAABJNBQABARJNBAAAEhADAAABBAgA
+EkkECAASTQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIA
+AAAAAC8BACpTVF81ODAwYzQwMWQwOGM0MjQ3OWU1OTYwYTg5NzhlZDk1ZC5jc3Byb2oAAAUBAAAA
+AA4BAAlNaWNyb3NvZnQAAB8BABpDb3B5cmlnaHQgQCBNaWNyb3NvZnQgMjAxMgAASQEAGi5ORVRG
+cmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1l
+d29yayA0LjUAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFk
+ZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5
+VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNl
+dAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAALC8AAAAAAAAAAAAARi8AAAAgAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAADgvAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAAH4EAAAAAAAAAAAAAH4ENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQACUsEcAAABAAJSwRw/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsATeAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAC6AwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAANAAKAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAH4AKwABAEYAaQBsAGUARABlAHMA
+YwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwA1ADgAMAAwAGMANAAwADEAZAAwADgAYwA0ADIANAA3
+ADkAZQA1ADkANgAwAGEAOAA5ADcAOABlAGQAOQA1AGQALgBjAHMAcAByAG8AagAAAAAAPgAPAAEA
+RgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA5ADQAAAAA
+AH4ALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8ANQA4ADAAMABjADQAMAAxAGQA
+MAA4AGMANAAyADQANwA5AGUANQA5ADYAMABhADgAOQA3ADgAZQBkADkANQBkAC4AYwBzAHAAcgBv
+AGoALgBkAGwAbAAAAAAAWgAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAyAAAAAAAqAAEAAQBM
+AGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAIYALwABAE8AcgBpAGcAaQBuAGEA
+bABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwA1ADgAMAAwAGMANAAwADEAZAAwADgAYwA0ADIANAA3
+ADkAZQA1ADkANgAwAGEAOAA5ADcAOABlAGQAOQA1AGQALgBjAHMAcAByAG8AagAuAGQAbABsAAAA
+AAB2ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfADUAOAAwADAAYwA0ADAAMQBk
+ADAAOABjADQAMgA0ADcAOQBlADUAOQA2ADAAYQA4ADkANwA4AGUAZAA5ADUAZAAuAGMAcwBwAHIA
+bwBqAAAAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADcAMwA2
+ADEALgAyADAAOQA5ADQAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADcAMwA2ADEALgAyADAAOQA5ADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAABYPwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SI Billing Report\Copy SI output to Prod Folder"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{971689FE-85A6-46E3-9BD1-9D6AFE267D0C}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copy SI output to Prod Folder"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_e813c2802a3c49bc959eae67bf37b0ff"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp">
+              <ProjectItem
+                Name="st_e813c2802a3c49bc959eae67bf37b0ff.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_e813c2802a3c49bc959eae67bf37b0ff.csproj</RootNamespace>
+    <AssemblyName>ST_e813c2802a3c49bc959eae67bf37b0ff.csproj</AssemblyName>
+    <ProjectGuid>{49D2E8BA-0AB2-4A67-895F-3ED7533B3630}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties.Settings.get_Default():ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+
+namespace ST_e813c2802a3c49bc959eae67bf37b0ff.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+        public void Main()
+        {
+            string FileNameExtension = "_" + DateTime.Now.AddMonths(-1).ToString("yyyyMM") + ".xlsx";
+
+            File.Move("\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\SelfInsuredInvoiceSummary\\Bin\\SIGroupInvoiceBillingSpreadsheet_Template.xlsx", "\\\\enterprise\\salessystems\\Reports\\InternalReporting\\FrequentFitness\\SelfInsuredInvoiceSummary\\SIGroupInvoiceBillingSpreadsheet" + FileNameExtension);
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_e813c2802a3c49bc959eae67bf37b0ff</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_e813c2802a3c49bc959eae67bf37b0ff</msb:DisplayName>
+    <msb:ProjectId>{C114930A-ED23-4FCB-9C87-A57BE0763E42}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_e813c2802a3c49bc959eae67bf37b0ff.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_e813c2802a3c49bc959eae67bf37b0ff.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_e813c2802a3c49bc959eae67bf37b0ff.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2012")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_e813c2802a3c49bc959eae67bf37b0ff.csproj.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAHCtVl4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAA7i8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAJwvAABPAAAAAEAAANwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA9A8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAANwEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADQ
+LwAAAAAAAEgAAAACAAUAECEAANQNAAABAAAAAAAAAOQuAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwAwBNAAAAAQAAEXIBAABwKBAAAAoLEgEVKBEAAAoLEgFy
+BQAAcCgSAAAKchMAAHAoEwAACgpyHwAAcHJCAQBwBigUAAAKKBUAAAoCKBYAAAoWbxcAAAoqHgIo
+GAAACioeAigZAAAKKq5+AQAABC0eckECAHDQAwAAAigaAAAKbxsAAApzHAAACoABAAAEfgEAAAQq
+Gn4CAAAEKh4CgAIAAAQqGn4DAAAEKh4CKB0AAAoqLnMIAAAGgAMAAAQqAEJTSkIBAAEAAAAAAAwA
+AAB2NC4wLjMwMzE5AAAAAAUAbAAAALwDAAAjfgAAKAQAAEQFAAAjU3RyaW5ncwAAAABsCQAAxAIA
+ACNVUwAwDAAAEAAAACNHVUlEAAAAQAwAAJQBAAAjQmxvYgAAAAAAAAACAAABVx2iAQkDAAAA+gEz
+ABYAAAEAAAAeAAAABQAAAAYAAAAJAAAAAQAAAB0AAAACAAAAEAAAAAEAAAACAAAAAwAAAAQAAAAB
+AAAAAwAAAAEAAAABAAAAAABHAwEAAAAAAAYA0QEVBAYAYAIVBAYAHQECBA8AkAQAAAYASgHDAwYA
+tAHDAwYAlQHDAwYARwLDAwYA8QHDAwYACgLDAwYAYQHDAwYAfAGJAgoAJQL2AgoAnAD2AgYAXgB2
+AwYAfQN2AwYAAAECBAYADQV2AwYA5QM1BAYA1QOuAw4A0AAxAw4AMQExAw4AuACZAwYA5QAVBAYA
+pQJ2AwYAWQAKAAoAHwP2AgYAZwB2AwYANQB2AwYAOwXDAwAAAAABAAAAAAABAAEAAQAQAI4DrAI5
+AAEAAQAAABAAPASfBEkAAQADAAABEADVBJ8EXQADAAcAAwEAAPgEAABBAAQACgARAIIDeAARAIwA
+fAARACUAgAAGBhQAhABWgOgEhwBWgGwAhwBQIAAAAACGAJQDBgABAKkgAAAAAIYY9QMGAAEAsSAA
+AAAAgxj1AwYAAQC5IAAAAACTCOEDiwABAOUgAAAAAJMIdACQAAEA7CAAAAAAkwiAAJUAAQD0IAAA
+AACWCBQFmwACAPsgAAAAAIYY9QMGAAIAAyEAAAAAkRj7A6AAAgAAAAEAfgIJAPUDAQARAPUDBgAZ
+APUDCgApAPUDEAAxAPUDEAA5APUDEABBAPUDEABJAPUDEABRAPUDEABZAPUDEABhAPUDEABpAPUD
+BgCJAPUDBgCxAPUDFQDBAPUDBgB5AC8FIQB5AN4EJgB5AKMCLADJAAYFMQDJAAYFOADRAIQCPgBx
+APAERADZACAFAQBxAPUDBgCRAPUDBgDhAEcASQDhADcFUACZAPUDVQC5APUDBgAIABQAbgAIABgA
+cwApAHMA2wAuAAsAswAuABMAvAAuABsA2wAuACMA5AAuACsAFAEuADMAFAEuADsAGgEuAEMA5AAu
+AEsAKQEuAFMAFAEuAFsASQFDAGMAcwBJAHMA2wBhAHsAcwBjAGsAcwAbAAMAAQAEAAMAAADlA6QA
+AACUAKkAAAAYBa4AAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAADBHAhSAAAAAAAArAIA
+AAQAAAAAAAAAAAAAAFwAHAAAAAAADgAAAAAAAAAAAAAAZQDXAgAAAAAEAAAAAAAAAAAAAABcAHYD
+AAAAAAAAAAABAAAARgQAAAUAAgAAAAAAADxNb2R1bGU+AFN5c3RlbS5JTwB2YWx1ZV9fAG1zY29y
+bGliAGRlZmF1bHRJbnN0YW5jZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBG
+aWxlAERhdGVUaW1lAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJj
+ZUN1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NC
+YXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVn
+Z2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2Fi
+bGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJp
+YnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmli
+dXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0
+dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1
+dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJp
+YnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBNb3ZlAFN5c3RlbS5SdW50
+aW1lLlZlcnNpb25pbmcAVG9TdHJpbmcAU1RfZTgxM2MyODAyYTNjNDliYzk1OWVhZTY3YmYzN2Iw
+ZmYuY3Nwcm9qAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2Vy
+dmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21wb25l
+bnRNb2RlbABTVF9lODEzYzI4MDJhM2M0OWJjOTU5ZWFlNjdiZjM3YjBmZi5jc3Byb2ouZGxsAFN5
+c3RlbQBFbnVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lz
+dGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24AQ3VsdHVyZUluZm8AZ2V0X1Jlc291
+cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1l
+LkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF9lODEzYzI4MDJhM2M0OWJjOTU5
+ZWFlNjdiZjM3YjBmZi5jc3Byb2ouUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVn
+Z2luZ01vZGVzAFNUX2U4MTNjMjgwMmEzYzQ5YmM5NTllYWU2N2JmMzdiMGZmLmNzcHJvai5Qcm9w
+ZXJ0aWVzAFNldHRpbmdzAEFkZE1vbnRocwBTdWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBD
+b25jYXQAT2JqZWN0AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AGdldF9Ob3cAZ2V0X0Fzc2Vt
+Ymx5AAADXwAADXkAeQB5AHkATQBNAAALLgB4AGwAcwB4AACBIVwAXABlAG4AdABlAHIAcAByAGkA
+cwBlAFwAcwBhAGwAZQBzAHMAeQBzAHQAZQBtAHMAXABSAGUAcABvAHIAdABzAFwASQBuAHQAZQBy
+AG4AYQBsAFIAZQBwAG8AcgB0AGkAbgBnAFwARgByAGUAcQB1AGUAbgB0AEYAaQB0AG4AZQBzAHMA
+XABTAGUAbABmAEkAbgBzAHUAcgBlAGQASQBuAHYAbwBpAGMAZQBTAHUAbQBtAGEAcgB5AFwAQgBp
+AG4AXABTAEkARwByAG8AdQBwAEkAbgB2AG8AaQBjAGUAQgBpAGwAbABpAG4AZwBTAHAAcgBlAGEA
+ZABzAGgAZQBlAHQAXwBUAGUAbQBwAGwAYQB0AGUALgB4AGwAcwB4AACA/VwAXABlAG4AdABlAHIA
+cAByAGkAcwBlAFwAcwBhAGwAZQBzAHMAeQBzAHQAZQBtAHMAXABSAGUAcABvAHIAdABzAFwASQBu
+AHQAZQByAG4AYQBsAFIAZQBwAG8AcgB0AGkAbgBnAFwARgByAGUAcQB1AGUAbgB0AEYAaQB0AG4A
+ZQBzAHMAXABTAGUAbABmAEkAbgBzAHUAcgBlAGQASQBuAHYAbwBpAGMAZQBTAHUAbQBtAGEAcgB5
+AFwAUwBJAEcAcgBvAHUAcABJAG4AdgBvAGkAYwBlAEIAaQBsAGwAaQBuAGcAUwBwAHIAZQBhAGQA
+cwBoAGUAZQB0AAB/UwBUAF8AZQA4ADEAMwBjADIAOAAwADIAYQAzAGMANAA5AGIAYwA5ADUAOQBl
+AGEAZQA2ADcAYgBmADMANwBiADAAZgBmAC4AYwBzAHAAcgBvAGoALgBQAHIAbwBwAGUAcgB0AGkA
+ZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAAAAANdpzPAgH2xNjyGHpXU+GQ4ABCABAQgDIAABBSAB
+ARERBCABAQ4FIAEBEVUFBwIOET0EAAARPQUgARE9CAQgAQ4OBgADDg4ODgUAAg4ODgUAAgEODgQg
+ABJtBgABEnERdQQgABJ5BiACAQ4SeQi3elxWGTTgiQiJhF3NgIDMkQQAAAAABAEAAAADBhJNAwYS
+UQMGEhACBggDBhEUBAAAEk0EAAASUQUAAQESUQQAABIQAwAAAQQIABJNBAgAElEECAASEAgBAAgA
+AAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAvAQAqU1RfZTgxM2My
+ODAyYTNjNDliYzk1OWVhZTY3YmYzN2IwZmYuY3Nwcm9qAAAFAQAAAAAOAQAJTWljcm9zb2Z0AAAf
+AQAaQ29weXJpZ2h0IEAgTWljcm9zb2Z0IDIwMTIAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249
+djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41ALQAAADOyu++
+AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNp
+b249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRl
+MDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFE
+ULQAAADELwAAAAAAAAAAAADeLwAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0C8AAAAAAAAAAAAA
+AABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAAH4EAAAAAAAAAAAAAH4ENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQAIUsEcAAABAAhSwRw/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsATeAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAC6AwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAANAAKAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAH4AKwABAEYAaQBsAGUARABlAHMA
+YwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwBlADgAMQAzAGMAMgA4ADAAMgBhADMAYwA0ADkAYgBj
+ADkANQA5AGUAYQBlADYANwBiAGYAMwA3AGIAMABmAGYALgBjAHMAcAByAG8AagAAAAAAPgAPAAEA
+RgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADcAMwA2ADEALgAyADEAMAAwADAAAAAA
+AH4ALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AZQA4ADEAMwBjADIAOAAwADIA
+YQAzAGMANAA5AGIAYwA5ADUAOQBlAGEAZQA2ADcAYgBmADMANwBiADAAZgBmAC4AYwBzAHAAcgBv
+AGoALgBkAGwAbAAAAAAAWgAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAyAAAAAAAqAAEAAQBM
+AGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAIYALwABAE8AcgBpAGcAaQBuAGEA
+bABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwBlADgAMQAzAGMAMgA4ADAAMgBhADMAYwA0ADkAYgBj
+ADkANQA5AGUAYQBlADYANwBiAGYAMwA3AGIAMABmAGYALgBjAHMAcAByAG8AagAuAGQAbABsAAAA
+AAB2ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfAGUAOAAxADMAYwAyADgAMAAy
+AGEAMwBjADQAOQBiAGMAOQA1ADkAZQBhAGUANgA3AGIAZgAzADcAYgAwAGYAZgAuAGMAcwBwAHIA
+bwBqAAAAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADcAMwA2
+ADEALgAyADEAMAAwADAAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADcAMwA2ADEALgAyADEAMAAwADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAADwPwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SI Billing Report\Create SI Group Invoice"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{921CFB18-3CE3-49A4-9B23-D5DBB84D7F5F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create SI Group Invoice"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{07DEA644-378B-4B75-89CB-07AEA47E555C}"
+              SQLTask:SqlStatementSource="EXEC [output].[CreateSIGroupInvoiceDetailData]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SI Billing Report\SI Group Output"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{47E220F9-6FC6-443A-819F-7BCB040061D7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SI Group Output"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              version="1">
+              <components>
+                <component
+                  refId="Package\SI Billing Report\SI Group Output\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input].Columns[BillToGroupName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="BillToGroupName"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToGroupName]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input].Columns[PaymentMethod]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="PaymentMethod"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMethod]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input].Columns[Comment01]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="Comment01"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment01]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input].Columns[ParentGroupNbr]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="ParentGroupNbr"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ParentGroupNbr]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input].Columns[CustNbr]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="CustNbr"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustNbr]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input].Columns[Line1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Line1"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line1]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of BillToGroupName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of BillToGroupName]"
+                          name="Copy of BillToGroupName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToGroupName]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PaymentMethod]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PaymentMethod]"
+                          name="Copy of PaymentMethod"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMethod]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Comment01]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Comment01]"
+                          name="Copy of Comment01"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment01]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ParentGroupNbr]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ParentGroupNbr]"
+                          name="Copy of ParentGroupNbr"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ParentGroupNbr]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CustNbr]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CustNbr]"
+                          name="Copy of CustNbr"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustNbr]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Line1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="1"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Line1]"
+                          name="Copy of Line1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line1]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SI Billing Report\SI Group Output\Excel Destination"
+                  componentClassID="Microsoft.ExcelDestination"
+                  contactInfo="Excel Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Excel Destination"
+                  name="Excel Destination"
+                  usesDispositions="true">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">AccountingSummary$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SI Billing Report\SI Group Output\Excel Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SIBilling_ExcelConnection]"
+                      connectionManagerRefId="Package.ConnectionManagers[SIBilling_ExcelConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Excel Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Line01Desc]"
+                          cachedDataType="wstr"
+                          cachedLength="82"
+                          cachedName="Line01Desc"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Line01Desc]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line01Desc]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Line02Description]"
+                          cachedDataType="i4"
+                          cachedName="Line02Description"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Line02Description]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line02Description]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Copy of BillToGroupName]"
+                          cachedDataType="wstr"
+                          cachedLength="150"
+                          cachedName="Copy of BillToGroupName"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[BillToGroupName]"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of BillToGroupName]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Copy of PaymentMethod]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copy of PaymentMethod"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[PaymentMethod]"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PaymentMethod]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Copy of Comment01]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Copy of Comment01"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Comment01]"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Comment01]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Copy of ParentGroupNbr]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of ParentGroupNbr"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ParentGroupNbr]"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ParentGroupNbr]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Copy of CustNbr]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of CustNbr"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[CustNbr]"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CustNbr]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[Copy of Line1]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Copy of Line1"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Line1]"
+                          lineageId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Line1]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[isInvoiced]"
+                          cachedDataType="i4"
+                          cachedName="isInvoiced"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[isInvoiced]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isInvoiced]" />
+                        <inputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].Columns[InvoiceAmt]"
+                          cachedDataType="numeric"
+                          cachedName="InvoiceAmt"
+                          cachedPrecision="38"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Amount]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceAmt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[isInvoiced]"
+                          dataType="wstr"
+                          length="255"
+                          name="isInvoiced" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ParentGroupNbr]"
+                          dataType="wstr"
+                          length="255"
+                          name="ParentGroupNbr" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[BillToGroupName]"
+                          dataType="wstr"
+                          length="255"
+                          name="BillToGroupName" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[CustNbr]"
+                          dataType="wstr"
+                          length="255"
+                          name="CustNbr" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Line1]"
+                          dataType="wstr"
+                          length="255"
+                          name="Line1" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Line01Desc]"
+                          dataType="wstr"
+                          length="255"
+                          name="Line01Desc" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Line02Description]"
+                          dataType="wstr"
+                          length="255"
+                          name="Line02Description" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Amount]"
+                          dataType="wstr"
+                          length="255"
+                          name="Amount" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[PaymentMethod]"
+                          dataType="wstr"
+                          length="255"
+                          name="PaymentMethod" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Comment01]"
+                          dataType="wstr"
+                          length="255"
+                          name="Comment01" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SI Billing Report\SI Group Output\Excel Destination.Outputs[Excel Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Excel Destination Error Output"
+                      synchronousInputId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SI Billing Report\SI Group Output\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [output].[CreateSIGroupBillingOutput]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[FrequentFitness]"
+                      connectionManagerRefId="Package.ConnectionManagers[FrequentFitness]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isInvoiced]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isInvoiced]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isInvoiced]"
+                          name="isInvoiced"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ParentGroupNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ParentGroupNbr]"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ParentGroupNbr]"
+                          name="ParentGroupNbr"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToGroupName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BillToGroupName]"
+                          length="150"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToGroupName]"
+                          name="BillToGroupName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustNbr]"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustNbr]"
+                          name="CustNbr"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Line1]"
+                          length="1"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line1]"
+                          name="Line1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line01Desc]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Line01Desc]"
+                          length="82"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line01Desc]"
+                          name="Line01Desc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line02Description]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Line02Description]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Line02Description]"
+                          name="Line02Description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMethod]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaymentMethod]"
+                          length="50"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMethod]"
+                          name="PaymentMethod"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment01]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Comment01]"
+                          length="500"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment01]"
+                          name="Comment01"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReportMonth]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReportMonth]"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReportMonth]"
+                          name="ReportMonth"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiteNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SiteNbr]"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiteNbr]"
+                          name="SiteNbr"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isBillEachSite]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isBillEachSite]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isBillEachSite]"
+                          name="isBillEachSite"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isWellnessCredit]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isWellnessCredit]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isWellnessCredit]"
+                          name="isWellnessCredit"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isHeaderOnly]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isHeaderOnly]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[isHeaderOnly]"
+                          name="isHeaderOnly"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReimbursementAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReimbursementAmount]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReimbursementAmount]"
+                          name="ReimbursementAmount"
+                          precision="38"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceAmt]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceAmt]"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceAmt]"
+                          name="InvoiceAmt"
+                          precision="38"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isInvoiced]"
+                          dataType="i4"
+                          name="isInvoiced" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ParentGroupNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ParentGroupNbr" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BillToGroupName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="BillToGroupName" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="CustNbr" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Line1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Line1" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Line01Desc]"
+                          dataType="wstr"
+                          length="82"
+                          name="Line01Desc" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Line02Description]"
+                          dataType="i4"
+                          name="Line02Description" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaymentMethod]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PaymentMethod" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Comment01]"
+                          dataType="wstr"
+                          length="500"
+                          name="Comment01" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReportMonth]"
+                          dataType="wstr"
+                          length="10"
+                          name="ReportMonth" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SiteNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="SiteNbr" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isBillEachSite]"
+                          dataType="bool"
+                          name="isBillEachSite" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isWellnessCredit]"
+                          dataType="bool"
+                          name="isWellnessCredit" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isHeaderOnly]"
+                          dataType="bool"
+                          name="isHeaderOnly" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReimbursementAmount]"
+                          dataType="numeric"
+                          name="ReimbursementAmount"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceAmt]"
+                          dataType="numeric"
+                          name="InvoiceAmt"
+                          precision="38"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isInvoiced]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isInvoiced]"
+                          name="isInvoiced" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReportMonth]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReportMonth]"
+                          name="ReportMonth" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ParentGroupNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ParentGroupNbr]"
+                          name="ParentGroupNbr" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SiteNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SiteNbr]"
+                          name="SiteNbr" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BillToGroupName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BillToGroupName]"
+                          name="BillToGroupName" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustNbr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustNbr]"
+                          name="CustNbr" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Line1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Line1]"
+                          name="Line1" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Line01Desc]"
+                          dataType="wstr"
+                          length="82"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Line01Desc]"
+                          name="Line01Desc" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Line02Description]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Line02Description]"
+                          name="Line02Description" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isBillEachSite]"
+                          dataType="bool"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isBillEachSite]"
+                          name="isBillEachSite" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isWellnessCredit]"
+                          dataType="bool"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isWellnessCredit]"
+                          name="isWellnessCredit" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isHeaderOnly]"
+                          dataType="bool"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isHeaderOnly]"
+                          name="isHeaderOnly" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReimbursementAmount]"
+                          dataType="numeric"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReimbursementAmount]"
+                          name="ReimbursementAmount"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceAmt]"
+                          dataType="numeric"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceAmt]"
+                          name="InvoiceAmt"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaymentMethod]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaymentMethod]"
+                          name="PaymentMethod" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Comment01]"
+                          dataType="wstr"
+                          length="500"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Comment01]"
+                          name="Comment01" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SI Billing Report\SI Group Output.Paths[Data Conversion Output]"
+                  endId="Package\SI Billing Report\SI Group Output\Excel Destination.Inputs[Excel Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\SI Billing Report\SI Group Output\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\SI Billing Report\SI Group Output.Paths[OLE DB Source Output]"
+                  endId="Package\SI Billing Report\SI Group Output\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SI Billing Report\SI Group Output\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SI Billing Report\Update flags that are NULL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B26F9995-AE9B-4A9D-B1F8-61D4D64F72D5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update flags that are NULL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{07DEA644-378B-4B75-89CB-07AEA47E555C}"
+              SQLTask:SqlStatementSource="EXEC [output].[SIGroupsHeaderDataUpdateFlags]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SI Billing Report.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{67C4C61E-26CD-4F37-8B8A-FF57AB7C2885}"
+          DTS:From="Package\SI Billing Report\Create SI Group Invoice"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SI Billing Report\Copy Excel Template for SI output" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SI Billing Report.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{0A98DB2C-7B9B-47B0-9944-228C1987C6FD}"
+          DTS:From="Package\SI Billing Report\SI Group Output"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SI Billing Report\Copy SI output to Prod Folder" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SI Billing Report.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{264F7154-EB94-477E-A303-1C446C583572}"
+          DTS:From="Package\SI Billing Report\Update flags that are NULL"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SI Billing Report\Create SI Group Invoice" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SI Billing Report.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{185504EC-6748-420B-AF0D-99D4EDE7C71D}"
+          DTS:From="Package\SI Billing Report\Copy Excel Template for SI output"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SI Billing Report\SI Group Output" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,44"
+          Id="Package\SI Billing Report\Copy Excel Template for SI output"
+          TopLeft="9.35849056603774,168.358490566038" />
+        <NodeLayout
+          Size="204,44"
+          Id="Package\SI Billing Report\Copy SI output to Prod Folder"
+          TopLeft="14.9056603773585,331.679245283019" />
+        <NodeLayout
+          Size="217,44"
+          Id="Package\SI Billing Report\Create SI Group Invoice"
+          TopLeft="8.37735849056594,86.6981132075472" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\SI Billing Report\SI Group Output"
+          TopLeft="15.3962264150942,250.018867924528" />
+        <NodeLayout
+          Size="200,44"
+          Id="Package\SI Billing Report\Update flags that are NULL"
+          TopLeft="12.9811320754717,13.4150943396226" />
+        <EdgeLayout
+          Id="Package\SI Billing Report.PrecedenceConstraints[Constraint]"
+          TopLeft="116.716981132075,130.622641509434">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.7358490566038"
+              Start="0,0"
+              End="0,30.2358490566038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.2358490566038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SI Billing Report.PrecedenceConstraints[Constraint 1]"
+          TopLeft="94.8962264150942,292.018867924528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.0094339622643,39.660377358491"
+              Start="0,0"
+              End="22.0094339622643,32.160377358491">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.8301886792455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.8301886792455"
+                    Point2="0,19.8301886792455"
+                    Point3="4,19.8301886792455" />
+                  <mssgle:LineSegment
+                    End="18.0094339622643,19.8301886792455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.0094339622643,19.8301886792455"
+                    Point2="22.0094339622643,19.8301886792455"
+                    Point3="22.0094339622643,23.8301886792455" />
+                  <mssgle:LineSegment
+                    End="22.0094339622643,32.160377358491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SI Billing Report.PrecedenceConstraints[Constraint 2]"
+          TopLeft="112.830188679245,57.3396226415094">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="3.88679245283015,29.3584905660377"
+              Start="0,0"
+              End="3.88679245283015,21.8584905660377">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6792452830189" />
+                  <mssgle:LineSegment
+                    End="3.88679245283015,14.6792452830189" />
+                  <mssgle:LineSegment
+                    End="3.88679245283015,21.8584905660377" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SI Billing Report.PrecedenceConstraints[Constraint 3]"
+          TopLeft="116.858490566038,212.358490566038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.9622641509435,37.66037735849"
+              Start="0,0"
+              End="-21.9622641509435,30.16037735849">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.830188679245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.830188679245"
+                    Point2="0,18.830188679245"
+                    Point3="-4,18.830188679245" />
+                  <mssgle:LineSegment
+                    End="-17.9622641509435,18.830188679245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.9622641509435,18.830188679245"
+                    Point2="-21.9622641509435,18.830188679245"
+                    Point3="-21.9622641509435,22.830188679245" />
+                  <mssgle:LineSegment
+                    End="-21.9622641509435,30.16037735849" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="240,431"
+          Size="240,475"
+          Id="Package\SI Billing Report"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SI Billing Report\SI Group Output">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\SI Billing Report\SI Group Output\Excel Destination"
+          TopLeft="5.5,197.198113207547" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\SI Billing Report\SI Group Output\OLE DB Source"
+          TopLeft="34.4433962264151,5.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\SI Billing Report\SI Group Output\Data Conversion"
+          TopLeft="182.179245283019,96.3679245283019" />
+        <EdgeLayout
+          Id="Package\SI Billing Report\SI Group Output.Paths[OLE DB Source Output]"
+          TopLeft="102.330188679245,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147.735849056604,46.9433962264151"
+              Start="0,0"
+              End="147.735849056604,39.4433962264151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.4716981132075" />
+                  <mssgle:LineSegment
+                    End="147.735849056604,23.4716981132075" />
+                  <mssgle:LineSegment
+                    End="147.735849056604,39.4433962264151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SI Billing Report\SI Group Output.Paths[Data Conversion Output]"
+          TopLeft="250.066037735849,140.292452830189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-176.679245283019,56.9056603773585"
+              Start="0,0"
+              End="-176.679245283019,49.4056603773585">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.4528301886793" />
+                  <mssgle:LineSegment
+                    End="-176.679245283019,28.4528301886793" />
+                  <mssgle:LineSegment
+                    End="-176.679245283019,49.4056603773585" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SI Billing Report\SI Group Output\Excel Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SI Billing Report\SI Group Output\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
